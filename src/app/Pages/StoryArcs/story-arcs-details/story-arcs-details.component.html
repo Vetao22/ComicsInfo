@@ -1,0 +1,93 @@
+
+<div *ngIf="storyArc" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="storyArc.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ storyArc.name }}</h5>
+      <h5 *ngIf="storyArc.publisher" class="h5 mt-2">Publisher: {{ storyArc.publisher['name'] }}</h5>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="storyArc.deck != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="storyArc.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ storyArc.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="storyArc.description != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="storyArc.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="storyArc.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="storyArc.issues != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseIssues" aria-expanded="true" aria-controls="collapseOne">
+                Issues
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="storyArc.issues" id="collapseIssues" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let issue of storyArc.issues" class="list-inline-item">
+                   <p class="p">{{ issue['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="storyArc.movies != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="true" aria-controls="collapseOne">
+                Movies
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="storyArc.movies" id="collapseMovies" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let movie of storyArc.movies" class="list-inline-item">
+                   <p class="p">{{ movie['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

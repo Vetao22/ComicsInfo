@@ -1,0 +1,77 @@
+
+<div *ngIf="series" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="series.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ series.name }}</h5>
+      <h5 *ngIf="series.countOfEpisodes" class="h5 mt-2">Episodes: {{ series.countOfEpisodes }}</h5>
+      <h5 *ngIf="series.firstEpisode" class="h5 mt-2">First Episode: {{ series.firstEpisode['name'] }}</h5>
+      <h5 *ngIf="series.lastEpisode" class="h5 mt-2">Last Episode: {{ series.lastEpisode['name'] }}</h5>
+      <h5 *ngIf="series.publisher" class="h5 mt-2">Publisher: {{ series.publisher['name'] }}</h5>
+      <h5 *ngIf="series.startYear" class="h5 mt-2">Start Year: {{ series.startYear }}</h5>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="series.deck != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="series.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ series.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="series.description != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="series.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="series.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="series.characterCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseCharacters" aria-expanded="true" aria-controls="collapseOne">
+                Characters
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="series.characterCredits" id="collapseCharacters" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let char of series.characterCredits" class="list-inline-item">
+                   <p class="p">{{ char['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

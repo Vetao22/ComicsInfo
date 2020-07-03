@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let storyArc of storyArcs" class="col-sm mt-1 justify-content-center d-flex">
+        <div class="card" style="width: 15rem;">
+          <img [src]="storyArc.smallImgUrl" class="card-img-top" style="max-height: 250px;" >
+          <div class="card-body d-flex flex-column">
+            <a [routerLink]="['/StoryArcDetails', storyArc.id]" href="#" class="stretched-link w-100 mt-auto">{{ storyArc.name }}</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div *ngIf="loading" class="d-flex justify-content-center">
+    <img src="../assets/loading.gif" width="64" height="64"/>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <button id="btnLoad" class="btn btn-info mt-2 mb-2" (click)="Load()">Load</button>
+  </div>
+
+</div>
+

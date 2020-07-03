@@ -1,0 +1,65 @@
+
+<nav class="navbar navbar-expand-sm navbar-light bg-light fixed-top">
+    <a routerLink="/Home" class="navbar-brand" href="#" data-toggle="collapse" data-target="#navbarSupportedContent">
+        <img src="../assets/icon.png" width="32" height="32"/>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a routerLink="/Home" class="nav-link" data-toggle="collapse" data-target="#navbarSupportedContent" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navBarInfoDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Comics
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navBarInfoDropDown">
+              <a routerLink="/Characters" class="dropdown-item" href="#" data-toggle="collapse" data-target="#navbarSupportedContent">Characters</a>
+              <a class="dropdown-item" href="/Publishers">Publishers</a>
+              <a class="dropdown-item" href="/StoryArcs">Story Arcs</a>
+              <a class="dropdown-item" href="/Teams">Teams</a>
+              <a class="dropdown-item" href="/Volumes">Volumes</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navBarMediaDropDown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Multimedia
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navBarMediaDropDown">
+              <a class="dropdown-item" href="/Movies">Movies</a>
+              <a class="dropdown-item" href="/Authors">People</a>
+              <a class="dropdown-item" href="/Series">Series</a>
+            </div>
+        </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0" #form="ngForm">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search" name="searchTerm" #searchTerm required/>
+        <div class="input-group-append">
+          <button class="form-control btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+          data-display="static" aria-haspopup="true" aria-expanded="false">What?</button>
+          <div class="dropdown-menu dropdown-menu dropdown-menu-lg-right">
+            <button class="dropdown-item" type="button" (click)="Search('Characters', searchTerm.value)">Characters</button>
+            <button class="dropdown-item" type="button" (click)="Search('Authors', searchTerm.value)">Authors</button>
+            <button class="dropdown-item" type="button" (click)="Search('Movies', searchTerm.value)">Movies</button>
+            <button class="dropdown-item" type="button" (click)="Search('Publishers', searchTerm.value)">Publishers</button>
+            <button class="dropdown-item" type="button" (click)="Search('Series', searchTerm.value)">Series</button>
+            <button class="dropdown-item" type="button" (click)="Search('StoryArcs', searchTerm.value)">Story Arcs</button>
+            <button class="dropdown-item" type="button" (click)="Search('Volumes', searchTerm.value)">Volumes</button>
+            <button class="dropdown-item" type="button" (click)="Search('Teams', searchTerm.value)">Teams</button>
+          </div>
+          <div class="separator"></div>
+        </div>
+      </div>
+    </form>
+
+    </div>
+  </nav>
+

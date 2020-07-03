@@ -1,0 +1,218 @@
+
+<div *ngIf="movie" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="movie.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ movie.name }}</h5>
+      <h5 *ngIf="movie.boxOfficeRevenue.length > 0" class="h5">Box Office: {{ movie.boxOfficeRevenue | currency }}</h5>
+      <h5 *ngIf="movie.budget" class="h5">Budget: {{ movie.budget | currency }}</h5>
+      <h5 *ngIf="movie.distributor" class="h5">Distributor: {{ movie.distributor }}</h5>
+      <h5 *ngIf="movie.rating" class="h5">Rating: {{ movie.rating }}</h5>
+      <h5 *ngIf="movie.releaseDate" class="h5">Release Date: {{ movie.releaseDate | date: "mediumDate" }}</h5>
+      <h5 *ngIf="movie.runtime" class="h5">Runtime: {{ movie.runtime }}</h5>
+      <h5 *ngIf="movie.totalRevenue" class="h5">Total Revenue: {{ movie.totalRevenue | currency }}</h5>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="movie.characters.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseCharacters" aria-expanded="true" aria-controls="collapseOne">
+                Characters
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.characters" id="collapseCharacters" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let char of movie.characters" class="list-inline-item">
+                   <p class="p">{{ char['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.deck" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ movie.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.description" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="movie.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.concepts.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseConcepts" aria-expanded="true" aria-controls="collapseOne">
+                Concepts
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.concepts" id="collapseConcepts" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let concept of movie.concepts" class="list-inline-item">
+                   <p class="p">{{ concept['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.locations.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseLocations" aria-expanded="true" aria-controls="collapseOne">
+                Locations
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.locations" id="collapseLocations" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let location of movie.locations" class="list-inline-item">
+                  <p  class="p">{{ location['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.producers != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseProducers" aria-expanded="true" aria-controls="collapseOne">
+                Producers
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.producers" id="collapseProducers" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let producer of movie.producers" class="list-inline-item">
+                   <p class="p">{{ producer['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.studios.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseStudios" aria-expanded="true" aria-controls="collapseOne">
+                Studios
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.studios" id="collapseStudios" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let studio of movie.studios" class="list-inline-item">
+                   <p class="p">{{ studio['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.teams.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseTeams" aria-expanded="true" aria-controls="collapseOne">
+                Teams
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.teams" id="collapseTeams" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let team of movie.teams" class="list-inline-item">
+                   <p class="p">{{ team['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.things != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseThings" aria-expanded="true" aria-controls="collapseOne">
+                Things
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.things" id="collapseThings" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let thing of movie.things" class="list-inline-item">
+                   <p class="p">{{ thing['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="movie.writers != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseWriters" aria-expanded="true" aria-controls="collapseOne">
+                Writers
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="movie.writers" id="collapseWriters" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let writer of movie.writers" class="list-inline-item">
+                   <p class="p">{{ writer['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

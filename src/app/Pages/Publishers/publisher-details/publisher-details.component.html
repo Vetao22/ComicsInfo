@@ -1,0 +1,134 @@
+
+<div *ngIf="publisher" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="publisher.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ publisher.name }}</h5>
+      <h5 *ngIf="publisher.locationCity" class="h5 mt-2">City: {{ publisher.locationCity }}</h5>
+      <h5 *ngIf="publisher.locationState" class="h5 mt-2">State: {{ publisher.locationState }}</h5>
+      <h5 *ngIf="publisher.locationAddress" class="h5 mt-2">Address: {{ publisher.locationAddress }}</h5>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="publisher.characters != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseCharacters" aria-expanded="true" aria-controls="collapseOne">
+                Characters
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="publisher.characters" id="collapseCharacters" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let char of publisher.characters" class="list-inline-item">
+                   <p class="p">{{ char['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="publisher.deck != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="publisher.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ publisher.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="publisher.description != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="publisher.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="publisher.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="publisher.teams != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseTeams" aria-expanded="true" aria-controls="collapseOne">
+                Teams
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="publisher.teams" id="collapseTeams" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let team of publisher.teams" class="list-inline-item">
+                   <p class="p">{{ team['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="publisher.storyArcs != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseStoryArcs" aria-expanded="true" aria-controls="collapseOne">
+                Story Arcs
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="publisher.storyArcs" id="collapseStoryArcs" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let storyArcs of publisher.storyArcs" class="list-inline-item">
+                   <p class="p">{{ storyArcs['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="publisher.volumes != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseVolumes" aria-expanded="true" aria-controls="collapseOne">
+                Volumes
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="publisher.volumes" id="collapseVolumes" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let volume of publisher.volumes" class="list-inline-item">
+                   <p class="p">{{ volume['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

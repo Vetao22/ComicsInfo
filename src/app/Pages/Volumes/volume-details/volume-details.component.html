@@ -1,0 +1,175 @@
+
+<div *ngIf="volume" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="volume.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ volume.name }}</h5>
+      <h5 *ngIf="volume.firstIssue" class="h5 mt-2">First Issue: {{ volume.firstIssue['name'] }}</h5>
+      <h5 *ngIf="volume.lastIssue" class="h5 mt-2">Last Issue: {{ volume.lastIssue['name'] }}</h5>
+      <h5 *ngIf="volume.publisher" class="h5 mt-2">Publisher: {{ volume.publisher['name'] }}</h5>
+      <h5 *ngIf="volume.startYear" class="h5 mt-2">Start Year: {{ volume.startYear }}</h5>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="volume.deck != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ volume.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.description != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="volume.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.characterCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseCharacters" aria-expanded="true" aria-controls="collapseOne">
+                Characters
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.characterCredits" id="collapseCharacters" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let char of volume.characterCredits" class="list-inline-item">
+                   <p class="p">{{ char['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.conceptCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseConcepts" aria-expanded="true" aria-controls="collapseOne">
+                Concepts
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.conceptCredits" id="collapseConcepts" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let concept of volume.conceptCredits" class="list-inline-item">
+                   <p class="p">{{ concept['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.locationCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseLocations" aria-expanded="true" aria-controls="collapseOne">
+                Locations
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.locationCredits" id="collapseLocations" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let location of volume.locationCredits" class="list-inline-item">
+                   <p class="p">{{ location['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.objectCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseObjects" aria-expanded="true" aria-controls="collapseOne">
+                Objects
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.objectCredits" id="collapseObjects" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let object of volume.objectCredits" class="list-inline-item">
+                   <p class="p">{{ object['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.personCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapsePeople" aria-expanded="true" aria-controls="collapseOne">
+                People
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.personCredits" id="collapsePeople" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let person of volume.personCredits" class="list-inline-item">
+                   <p class="p">{{ person['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="volume.teamCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseTeams" aria-expanded="true" aria-controls="collapseOne">
+                Teams
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="volume.teamCredits" id="collapsePeople" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let team of volume.teamCredits" class="list-inline-item">
+                   <p class="p">{{ team['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

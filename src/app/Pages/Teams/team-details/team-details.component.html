@@ -1,0 +1,174 @@
+
+<div *ngIf="team" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="team.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ team.name }}</h5>
+      <h5 *ngIf="team.publisher" class="h5 mt-2">Publisher: {{ team.publisher['name'] }}</h5>
+      <h5 *ngIf="team.countOfIssueAppearences" class="h5 mt-2">Issue Appearences: {{ team.countOfIssueAppearences }}</h5>
+      <h5 *ngIf="team.countOfTeamMembers" class="h5 mt-2">Team Members: {{ team.countOfTeamMembers }}</h5>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="team.deck != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ team.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.description != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="team.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.characters != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseCharacters" aria-expanded="true" aria-controls="collapseOne">
+                Characters
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.characters" id="collapseCharacters" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let char of team.characters" class="list-inline-item">
+                   <p class="p">{{ char['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.characterEnemies != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseEnemies" aria-expanded="true" aria-controls="collapseOne">
+                Enemies
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.characterEnemies" id="collapseEnemies" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let enemy of team.characterEnemies" class="list-inline-item">
+                   <p class="p">{{ enemy['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.characterFriends != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseFriends" aria-expanded="true" aria-controls="collapseOne">
+                Friends
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.characterFriends" id="collapseFriends" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let friend of team.characterFriends" class="list-inline-item">
+                   <p class="p">{{ friend['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.movies != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseMovies" aria-expanded="true" aria-controls="collapseOne">
+                Movies
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.movies" id="collapseMovies" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let movie of team.movies" class="list-inline-item">
+                   <p class="p">{{ movie['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.storyArcCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseStoryArcs" aria-expanded="true" aria-controls="collapseOne">
+                Story Arcs
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.storyArcCredits" id="collapseStoryArcs" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let storyArc of team.storyArcCredits" class="list-inline-item">
+                   <p class="p">{{ storyArc['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="team.volumeCredits != null" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseVolumes" aria-expanded="true" aria-controls="collapseOne">
+                Volumes
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="team.volumeCredits" id="collapseVolumes" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let volume of team.volumeCredits" class="list-inline-item">
+                   <p class="p">{{ volume['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

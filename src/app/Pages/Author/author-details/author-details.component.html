@@ -1,0 +1,106 @@
+
+<div *ngIf="author" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex justify-content-center">
+        <img [src]="author.mediumImgUrl" class="w-40 img-fluid img-thumbnail" />
+      </div>
+
+      <h5 class="h5 mt-2">Name: {{ author.name }}</h5>
+      <h5 *ngIf="author.birth" class="h5">Birth: {{ author.birth | date:"dd/MM/yy"}}</h5>
+      <h5 *ngIf="author.death" class="h5">Death: {{ author.death }}</h5>
+      <h5 *ngIf="author.country" class="h5">Country: {{ author.country }}</h5>
+      <h5 *ngIf="author.email" class="h5">Email: {{ author.email }}</h5>
+      <h5 *ngIf="author.hometown" class="h5">Hometown: {{ author.hometown }}</h5>
+      <h5 *ngIf="author.website" class="h5">Website: <a href="{{ author.website }}">Go to Website</a></h5>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <h5 *ngIf="author.gender" class="h5">Gender:</h5>
+        </li>
+        <li class="list-inline-item">
+          <h5 *ngIf="author.gender == '1'">Male</h5>
+          <h5 *ngIf="author.gender == '2'">Female</h5>
+        </li>
+      </ul>
+
+      <div class="accordion" id="accordionExample">
+
+        <div *ngIf="author.createdCharacters.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseCreators" aria-expanded="true" aria-controls="collapseOne">
+                Characters
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="author.createdCharacters" id="collapseCreators" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let char of author.createdCharacters" class="list-inline-item">
+                   <p class="p">{{ char['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="author.deck" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDeck" aria-expanded="true" aria-controls="collapseOne">
+                Summary
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="author.deck" id="collapseDeck" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h5 class="h5">{{ author.deck }}</h5>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="author.description" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseDescription" aria-expanded="true" aria-controls="collapseOne">
+                Description
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="author.description" id="collapseDescription" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <div [innerHTML]="author.description"></div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="author.storyArcCredits.length > 0" class="card">
+          <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+              <button class="btn btn-link stretched-link" type="button" data-toggle="collapse" data-target="#collapseStoryArcs" aria-expanded="true" aria-controls="collapseOne">
+                Story Arcs
+              </button>
+            </h2>
+          </div>
+
+          <div *ngIf="author.storyArcCredits" id="collapseStoryArcs" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul class="list-inline">
+                <li *ngFor="let storyArc of author.storyArcCredits" class="list-inline-item">
+                   <p class="p">{{ storyArc['name'] }}; </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="loading" class="d-flex justify-content-center">
+  <img src="../assets/loading.gif" width="64" height="64"/>
+</div>

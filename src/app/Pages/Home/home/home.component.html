@@ -1,0 +1,13 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div *ngFor="let item of itens" class="col-sm mt-3 justify-content-center d-flex">
+      <div class="card" style="width: 15rem;">
+        <img [src]="item.ImgSrc" class="card-img-top">
+        <div class="card-body d-flex flex-column">
+          <a routerLink="{{ item.Link }}" href="#" class="btn btn-info w-100 mt-auto">{{ item.Type }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
