@@ -4,6 +4,4 @@ An experiment with Angular, Bootstrap and ComicsVine API.
 
 <br/>
 
-<img src="screenshots\mob-01.png" width="35%"/>
-<img src="screenshots\mob-02.png" width="35%"/>
-<img src="screenshots\mob-03.png" width="35%"/>
+<img src="screenshots\mob-01.png" width="35%"/> | <img src="screenshots\mob-02.png" width="35%"/> | <img src="screenshots\mob-03.png" width="35%"/>
